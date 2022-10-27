@@ -1,0 +1,6 @@
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+  <news-thumnail fxFlex="25%" fxFlex.md="33%" fxFlex.sm="50%" fxFlex.xs="100%"  *ngFor="let news of newsList" [favCheck]="favCheck" [news]="news" (addNews)="addToFavouriteList($event)" (deleteNews)='deleteNews($event)'></news-thumnail>
+</div>
+</div>

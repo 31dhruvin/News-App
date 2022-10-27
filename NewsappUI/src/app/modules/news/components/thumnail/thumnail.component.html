@@ -1,0 +1,22 @@
+<div layout="row" layout-md="column">
+  <div flex>
+    <mat-card class="news-card" class="mat-elevation-z4">
+      <mat-card-header>
+        <mat-card-title class="news-title">{{news?.title}}</mat-card-title>
+        <mat-card-subtitle>{{news?.sourceWebsiteName}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image class="news-image" [src]="news?.urlToImage" [alt]="" />
+      <mat-card-content class="news-overview">
+        {{news?.content}}
+      </mat-card-content>
+      <mat-card-actions class="news-actions">
+        <button mat-flat-button color="accent"><a href="{{news?.url}}" target="_blank">Read more...</a></button>
+        <button *ngIf="!favCheck" class="add-button" mat-raised-button color="primary"
+          (click)="addToFavouriteList()">Add Favourite<mat-icon>favorite</mat-icon></button>
+        <button *ngIf="favCheck" class="delete-button" mat-raised-button color="warn"
+          (click)="deleteNewsFav()"><mat-icon>delete_forever</mat-icon>Delete</button>
+        <hr>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

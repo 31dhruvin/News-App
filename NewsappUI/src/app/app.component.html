@@ -1,0 +1,57 @@
+<mat-toolbar color="primary" class="navcolor">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+      <mat-icon>list</mat-icon>
+    </button>
+    <span>NewsApp</span>
+    <span fxShow="true" fxHide.lt-md>
+
+      <button *ngIf="!auth.isTokenExpired()" mat-button [routerLink]="['/news/top']">Top News</button>
+      <button *ngIf="!auth.isTokenExpired()" mat-button [routerLink]="['/news/techNews']">Tech News</button>
+      <button *ngIf="!auth.isTokenExpired()" mat-button [routerLink]="['/news/businessNews']">Business News</button>
+      <button *ngIf="!auth.isTokenExpired()" mat-button [routerLink]="['/news/sportsNews']">Sports News</button>
+
+      <button *ngIf="!auth.isTokenExpired()" class="fav-button" mat-button
+        [routerLink]="['/news/favourites']">Favourites<mat-icon>favorite</mat-icon></button>
+      <button *ngIf="!auth.isTokenExpired()" class="search-button" mat-button class="search-button"
+        [routerLink]="['/news/search']">Search News <mat-icon>search</mat-icon></button>
+    </span>
+    <span class="menu-spacer"></span>
+    <span *ngIf="!auth.isTokenExpired()" fxShow="true" fxHide.lt-md>
+      <button class="logout" mat-button (click)="logout()">
+        <mat-icon>perm_identity</mat-icon>Logout
+      </button>
+    </span>
+    <span *ngIf="auth.isTokenExpired()" fxShow="true" fxHide.lt-md>
+      <button mat-button [routerLink]="['/login']">Login</button>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+
+
+<mat-sidenav-container fxFlexFill>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a *ngIf="!auth.isTokenExpired()" mat-list-item [routerLink]="['/news/top']">Top News</a>
+      <a *ngIf="!auth.isTokenExpired()" mat-list-item [routerLink]="['/news/techNews']">Tech News</a>
+      <a *ngIf="!auth.isTokenExpired()" mat-list-item [routerLink]="['/news/businessNews']">Business News</a>
+      <a *ngIf="!auth.isTokenExpired()" mat-list-item [routerLink]="['/news/sportsNews']">Sports News</a>
+      <a *ngIf="!auth.isTokenExpired()" mat-list-item [routerLink]="['/news/favourites']">Favourites<mat-icon>favorite</mat-icon></a>
+      <a *ngIf="!auth.isTokenExpired()" mat-list-item [routerLink]="['/news/search']">Search News<mat-icon>search</mat-icon></a>
+      <a *ngIf="!auth.isTokenExpired()" mat-list-item (click)="logout()">
+        <mat-icon>perm_identity</mat-icon>Logout
+      </a>
+      <a *ngIf="auth.isTokenExpired()" mat-list-item [routerLink]="['/login']">Login</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <marquee width="100%" direction="left" height="5%">
+    Welcome to NEWS App. <mat-icon>date_range</mat-icon> {{date}}
+  </marquee>
+
+
+  <router-outlet></router-outlet>

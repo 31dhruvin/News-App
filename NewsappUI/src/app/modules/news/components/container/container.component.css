@@ -1,0 +1,18 @@
+:host {
+    height: 100vh;
+}
+
+.news-container {
+  margin:auto;
+  display: flex-xs;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow-x:auto;
+}
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    width: 200px;
+}
